@@ -31,4 +31,8 @@ public class Hero {
     @Getter @Setter
     String email;
 
+    public Hero(String name){
+        this.name=name;
+    }
+
 }

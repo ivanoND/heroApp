@@ -12,7 +12,7 @@ public interface HeroService {
 
     void deleteHeroById(long id);
 
-    void addHero(Hero hero);
+    Hero addHero(Hero hero);
 
     void updateHero(Hero hero);
 }

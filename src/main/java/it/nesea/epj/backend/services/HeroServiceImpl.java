@@ -28,8 +28,9 @@ public class HeroServiceImpl implements HeroService {
     }
 
     @Override
-    public void addHero(Hero hero) {
+    public Hero addHero(Hero hero) {
         heroDao.save(hero);
+        return hero;
     }
 
     @Override
