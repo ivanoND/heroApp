@@ -1,18 +1,21 @@
 package it.nesea.epj.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
@@ -34,8 +37,18 @@ public class Hero {
     @Getter @Setter
     String email;
 
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "hero_ability",
+            joinColumns = @JoinColumn(name = "hero_id"),
+            inverseJoinColumns = @JoinColumn(name = "ability_id")
+    )
+    @Getter @Setter
+    private Set<Ability> abilities = new HashSet<>();
+
     public Hero(String name){
         this.name=name;
     }
-
 }
