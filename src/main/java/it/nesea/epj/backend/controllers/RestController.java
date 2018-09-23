@@ -5,6 +5,7 @@ import it.nesea.epj.backend.services.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,27 +22,27 @@ public class RestController {
     }
 
     @PostMapping("/api/hero")
-    public Hero addHero(@RequestBody Hero hero) {
+    public Hero addHero(@Valid @RequestBody Hero hero) {
         return heroService.addHero(hero);
     }
 
     @DeleteMapping("/api/hero/{id}")
-    public Hero deletHero(@PathVariable("id") long id) {
+    public Hero deletHero(@Valid @PathVariable("id") long id) {
         return heroService.deleteHeroById(id);
     }
 
     @GetMapping("/api/hero/{id}")
-    public Hero getHero(@PathVariable("id") Long id) {
+    public Hero getHero(@Valid @PathVariable("id") Long id) {
         return heroService.getHeroById(id);
     }
 
     @PutMapping("/api/hero")
-    public Hero updateHero(@RequestBody Hero hero) {
+    public Hero updateHero(@Valid @RequestBody Hero hero) {
         return heroService.updateHero(hero);
     }
 
     @GetMapping("/api/hero/name")
-    public List<Hero> searchHeroes(@RequestParam("name") String name) {
+    public List<Hero> searchHeroes(@Valid @RequestParam("name") String name) {
         return heroService.getHeroes()
                 .stream()
                 .filter(hero -> hero.getName().contains(name))
