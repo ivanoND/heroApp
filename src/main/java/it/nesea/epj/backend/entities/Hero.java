@@ -17,12 +17,18 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class Hero {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) @Getter
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
     long id;
 
-    @NotNull @Size(min = 3) @Getter @Setter
+    @NotNull(message = "Hero's name cannot be null.")
+    @Size(min = 3,message = "Lenght of hero's name cannot be < 3.")
+    @Getter @Setter
     String name;
 
-    @Email @Getter @Setter
+    @Email(message = "Email is not valid.")
+    @Getter @Setter
     String email;
+
 }
