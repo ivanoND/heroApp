@@ -28,4 +28,9 @@ public class RestController {
     public Hero deletHero(@PathVariable("id") long id){
         return heroService.deleteHeroById(id);
     }
+
+    @GetMapping("/api/hero/{id}")
+    public Hero getHero(@PathVariable("id") Long id){
+        return heroService.getHeroById(id);
+    }
 }
