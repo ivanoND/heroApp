@@ -23,8 +23,10 @@ public class HeroServiceImpl implements HeroService {
     }
 
     @Override
-    public void deleteHeroById(long id) {
+    public Hero deleteHeroById(long id) {
+        Hero hero = heroDao.getOne(id);
         heroDao.deleteById(id);
+        return hero;
     }
 
     @Override

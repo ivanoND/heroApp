@@ -1,5 +1,6 @@
 package it.nesea.epj.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +22,7 @@ public class Hero {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
+    @Getter @Setter
     long id;
 
     @NotNull(message = "Hero's name cannot be null.")

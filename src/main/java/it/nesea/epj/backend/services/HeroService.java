@@ -10,7 +10,7 @@ public interface HeroService {
 
     Hero getHeroById(long id);
 
-    void deleteHeroById(long id);
+    Hero deleteHeroById(long id);
 
     Hero addHero(Hero hero);
 

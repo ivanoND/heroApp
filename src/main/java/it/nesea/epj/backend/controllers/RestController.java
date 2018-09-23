@@ -23,4 +23,9 @@ public class RestController {
     public Hero addHero(@RequestBody Hero hero){
         return heroService.addHero(hero);
     }
+
+    @DeleteMapping("/api/hero/{id}")
+    public Hero deletHero(@PathVariable("id") long id){
+        return heroService.deleteHeroById(id);
+    }
 }
