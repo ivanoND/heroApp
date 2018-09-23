@@ -14,5 +14,5 @@ public interface HeroService {
 
     Hero addHero(Hero hero);
 
-    void updateHero(Hero hero);
+    Hero updateHero(Hero hero);
 }
