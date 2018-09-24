@@ -9,6 +9,4 @@ import java.util.List;
 
 @Repository
 public interface HeroDao extends JpaRepository<Hero,Long> {
-
-
 }

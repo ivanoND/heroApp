@@ -15,4 +15,6 @@ public interface HeroService {
     Hero addHero(Hero hero);
 
     Hero updateHero(Hero hero);
+
+
 }

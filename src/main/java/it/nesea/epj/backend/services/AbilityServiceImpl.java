@@ -3,13 +3,16 @@ package it.nesea.epj.backend.services;
 import it.nesea.epj.backend.daos.AbilityDao;
 import it.nesea.epj.backend.entities.Ability;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
+@Service
 public class AbilityServiceImpl implements AbilityService {
 
     @Autowired
-    AbilityDao abilityDao;
+    private AbilityDao abilityDao;
 
     @Override
     public List<Ability> getAbilities() {
@@ -37,4 +40,7 @@ public class AbilityServiceImpl implements AbilityService {
     public Ability updateAbility(Ability ability) {
         return abilityDao.save(ability);
     }
+
+
+
 }

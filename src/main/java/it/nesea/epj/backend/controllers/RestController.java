@@ -33,6 +33,7 @@ public class RestController {
 
     @GetMapping("/api/hero/{id}")
     public Hero getHero(@Valid @PathVariable("id") Long id) {
+
         return heroService.getHeroById(id);
     }
 

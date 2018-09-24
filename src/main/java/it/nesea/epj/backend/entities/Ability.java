@@ -26,10 +26,12 @@ public class Ability {
 
     @NotNull
     @UniqueElements
+    @Getter
+    @Setter
     String description;
 
     @ManyToMany(mappedBy = "abilities")
-    private Set<Hero> posts = new HashSet<>();
+    private Set<Hero> heroes = new HashSet<>();
 
     public Ability(@NotNull String description) {
         this.description = description;
