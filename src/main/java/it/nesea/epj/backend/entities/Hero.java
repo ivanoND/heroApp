@@ -39,8 +39,8 @@ public class Hero {
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
+            CascadeType.MERGE,
+    },fetch = FetchType.EAGER)
     @JoinTable(name = "hero_ability",
             joinColumns = @JoinColumn(name = "hero_id"),
             inverseJoinColumns = @JoinColumn(name = "ability_id")
