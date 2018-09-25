@@ -1,10 +1,7 @@
 package it.nesea.epj.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
@@ -16,6 +13,7 @@ import java.util.Set;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Ability {
 
     @Id
@@ -25,12 +23,11 @@ public class Ability {
     long id;
 
     @NotNull
-    @UniqueElements
     @Getter
     @Setter
     String description;
 
-    @ManyToMany(mappedBy = "abilities")
+    @ManyToMany(mappedBy = "abilities", fetch=FetchType.EAGER)
     private Set<Hero> heroes = new HashSet<>();
 
     public Ability(@NotNull String description) {

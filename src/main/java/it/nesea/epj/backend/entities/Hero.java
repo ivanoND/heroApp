@@ -2,10 +2,7 @@ package it.nesea.epj.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -21,6 +18,7 @@ import java.util.Set;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Hero {
 
     @Id
@@ -38,15 +36,15 @@ public class Hero {
     String email;
 
     @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE,
-    },fetch = FetchType.EAGER)
+            CascadeType.ALL
+    })
     @JoinTable(name = "hero_ability",
             joinColumns = @JoinColumn(name = "hero_id"),
             inverseJoinColumns = @JoinColumn(name = "ability_id")
     )
     @Getter @Setter
     private Set<Ability> abilities = new HashSet<>();
+
 
     public Hero(String name){
         this.name=name;

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -25,6 +26,11 @@ public class AbilityServiceImpl implements AbilityService {
     }
 
     @Override
+    public Optional<Ability> getAbilityByDescription(String description) {
+        return abilityDao.findByDescription(description);
+    }
+
+    @Override
     public Ability deleteAbilityById(long id) {
         Ability ability = abilityDao.getOne(id);
         abilityDao.deleteById(id);
@@ -40,6 +46,7 @@ public class AbilityServiceImpl implements AbilityService {
     public Ability updateAbility(Ability ability) {
         return abilityDao.save(ability);
     }
+
 
 
 

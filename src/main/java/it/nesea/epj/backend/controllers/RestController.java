@@ -1,12 +1,15 @@
 package it.nesea.epj.backend.controllers;
 
+import it.nesea.epj.backend.entities.Ability;
 import it.nesea.epj.backend.entities.Hero;
+import it.nesea.epj.backend.services.AbilityService;
 import it.nesea.epj.backend.services.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @CrossOrigin("http://localhost:4200")
@@ -15,6 +18,9 @@ public class RestController {
 
     @Autowired
     private HeroService heroService;
+
+    @Autowired
+    private AbilityService abilityService;
 
     @GetMapping("/api/heroes")
     public List<Hero> getHeroes() {
@@ -49,4 +55,5 @@ public class RestController {
                 .filter(hero -> hero.getName().contains(name))
                 .collect(Collectors.toList());
     }
+
 }

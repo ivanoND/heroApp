@@ -16,5 +16,5 @@ public interface HeroService {
 
     Hero updateHero(Hero hero);
 
-
+    Optional<Hero> getHeroByName(String name);
 }
