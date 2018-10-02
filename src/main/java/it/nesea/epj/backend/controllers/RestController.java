@@ -56,4 +56,16 @@ public class RestController {
                 .collect(Collectors.toList());
     }
 
+
+    @GetMapping("/api/abilities")
+    public List<Ability> findAbilities(){
+        return abilityService.getAbilities();
+    }
+
+
+    @GetMapping("/api/abilities/{heroId}")
+    public List<Ability> findAbilityByHero(@PathVariable("heroId") long heroId){
+        return abilityService.getAbilitiesFromHeroId(heroId);
+    }
+
 }

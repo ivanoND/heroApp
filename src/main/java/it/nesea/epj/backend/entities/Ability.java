@@ -2,6 +2,7 @@ package it.nesea.epj.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.hibernate.annotations.TypeDefs;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class Ability {
     @NotNull
     @Getter
     @Setter
+    @Column(unique = true)
     String description;
 
     @ManyToMany(mappedBy = "abilities", fetch=FetchType.EAGER)
