@@ -2,7 +2,6 @@ package it.nesea.epj.backend.services;
 
 import it.nesea.epj.backend.daos.AbilityDao;
 import it.nesea.epj.backend.entities.Ability;
-import it.nesea.epj.backend.entities.Hero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,8 +47,7 @@ public class AbilityServiceImpl implements AbilityService {
         return abilityDao.save(ability);
     }
 
-    @Override
-    public List<Ability> getAbilitiesFromHeroId(long heroId){
-        return abilityDao.findByHeroesId(heroId);
-    }
+
+
+
 }

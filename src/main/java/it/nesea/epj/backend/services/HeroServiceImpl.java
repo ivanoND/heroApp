@@ -1,7 +1,6 @@
 package it.nesea.epj.backend.services;
 
 import it.nesea.epj.backend.daos.HeroDao;
-import it.nesea.epj.backend.entities.Ability;
 import it.nesea.epj.backend.entities.Hero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,6 @@ public class HeroServiceImpl implements HeroService {
 
     @Autowired
     private HeroDao heroDao;
-
 
     @Override
     public List<Hero> getHeroes() {
@@ -34,7 +32,6 @@ public class HeroServiceImpl implements HeroService {
 
     @Override
     public Hero addHero(Hero hero) {
-
         heroDao.save(hero);
         return hero;
     }
