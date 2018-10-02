@@ -60,4 +60,13 @@ public class RestController {
     public List<Ability> getAbilities(){
         return abilityService.getAbilities();
     }
+
+    @GetMapping("/api/abilities/{heroId}")
+    public List<Ability> getNoHeroAbilities(@PathVariable("heroId") long heroId){
+        List<Ability> allAbilities = getAbilities();
+        List<Ability> heroAbilities = abilityService.getHeroAbilities(heroId);
+
+        allAbilities.removeAll(heroAbilities);
+        return allAbilities;
+    }
 }

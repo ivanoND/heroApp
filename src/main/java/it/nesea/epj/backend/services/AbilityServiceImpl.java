@@ -48,6 +48,10 @@ public class AbilityServiceImpl implements AbilityService {
     }
 
 
+    @Override
+    public List<Ability> getHeroAbilities(long heroId) {
+        return abilityDao.findByHeroesId(heroId);
+    }
 
 
 }

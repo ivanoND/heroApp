@@ -19,4 +19,7 @@ public interface AbilityService {
     Ability addAbility(Ability ability);
 
     Ability updateAbility(Ability ability);
+
+
+    List<Ability> getHeroAbilities(long heroId);
 }
