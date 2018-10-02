@@ -56,4 +56,8 @@ public class RestController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/api/abilities")
+    public List<Ability> getAbilities(){
+        return abilityService.getAbilities();
+    }
 }
