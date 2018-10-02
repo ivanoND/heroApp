@@ -74,4 +74,9 @@ public class RestController {
     public Ability getAbility(@Valid @PathVariable("id") Long id){
         return abilityService.getAbilityById(id);
     }
+
+    @PutMapping("/api/ability")
+    public Ability updateAbility(@Valid @RequestBody Ability ability) {
+        return abilityService.updateAbility(ability);
+    }
 }
