@@ -27,6 +27,7 @@ public class Ability {
     @Setter
     String description;
 
+
     @ManyToMany(mappedBy = "abilities", fetch=FetchType.EAGER)
     private Set<Hero> heroes = new HashSet<>();
 

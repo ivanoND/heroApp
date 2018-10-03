@@ -79,4 +79,14 @@ public class RestController {
     public Ability updateAbility(@Valid @RequestBody Ability ability) {
         return abilityService.updateAbility(ability);
     }
+
+    @DeleteMapping("/api/ability/{id}")
+    public Ability deleteAbility(@Valid @PathVariable("id") long id){
+        return abilityService.deleteAbilityById(id);
+    }
+
+    @PostMapping("/api/ability")
+    public Ability addAbility(@Valid @RequestBody Ability ability){
+        return this.abilityService.addAbility(ability);
+    }
 }
