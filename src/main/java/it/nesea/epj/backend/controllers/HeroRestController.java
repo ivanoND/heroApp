@@ -5,6 +5,7 @@ import it.nesea.epj.backend.entities.Hero;
 import it.nesea.epj.backend.services.AbilityService;
 import it.nesea.epj.backend.services.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -23,8 +24,8 @@ public class HeroRestController {
     }
 
     @GetMapping("/api/heroes")
-    public List<Hero> getHeroes() {
-        return heroService.getHeroes();
+    public ResponseEntity getHeroes() {
+        return ResponseEntity.ok(heroService.getHeroes());
     }
 
     @PostMapping("/api/hero")
