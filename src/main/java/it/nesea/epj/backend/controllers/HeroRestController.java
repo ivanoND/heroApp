@@ -29,31 +29,35 @@ public class HeroRestController {
     }
 
     @PostMapping("/api/hero")
-    public Hero addHero(@Valid @RequestBody Hero hero) {
-        return heroService.addHero(hero);
+    public ResponseEntity addHero(@Valid @RequestBody Hero hero) {
+        return ResponseEntity.ok(heroService.addHero(hero));
     }
 
     @DeleteMapping("/api/hero/{id}")
-    public Hero deletHero(@Valid @PathVariable("id") long id) {
-        return heroService.deleteHeroById(id);
+    public ResponseEntity deletHero(@Valid @PathVariable("id") long id) {
+        return ResponseEntity.ok(heroService.deleteHeroById(id));
     }
 
     @GetMapping("/api/hero/{id}")
-    public Hero getHero(@Valid @PathVariable("id") Long id) {
+    public ResponseEntity getHero(@Valid @PathVariable("id") Long id) {
 
-        return heroService.getHeroById(id);
+        Hero hero = heroService.getHeroById(id);
+        if(hero==null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(hero);
     }
 
     @PutMapping("/api/hero")
-    public Hero updateHero(@Valid @RequestBody Hero hero) {
-        return heroService.updateHero(hero);
+    public ResponseEntity updateHero(@Valid @RequestBody Hero hero) {
+        return ResponseEntity.ok(heroService.updateHero(hero));
     }
 
     @GetMapping("/api/hero/name")
-    public List<Hero> searchHeroes(@Valid @RequestParam("name") String name) {
-        return heroService.getHeroes()
+    public ResponseEntity searchHeroes(@Valid @RequestParam("name") String name) {
+        return ResponseEntity.ok(heroService.getHeroes()
                 .stream()
                 .filter(hero -> hero.getName().contains(name))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 }
