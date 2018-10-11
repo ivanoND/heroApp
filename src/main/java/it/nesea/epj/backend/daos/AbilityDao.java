@@ -13,4 +13,5 @@ public interface AbilityDao extends JpaRepository<Ability,Long> {
 
     Optional<Ability> findByDescription(String description);
     List<Ability> findByHeroesId(long heroId);
+    Optional<Ability> findOneById(long id);
 }

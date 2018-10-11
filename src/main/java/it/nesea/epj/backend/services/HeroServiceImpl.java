@@ -19,8 +19,8 @@ public class HeroServiceImpl implements HeroService {
     }
 
     @Override
-    public Hero getHeroById(long id) {
-        return heroDao.getOne(id);
+    public Optional<Hero> getHeroById(long id) {
+        return heroDao.findOneById(id);
     }
 
     @Override

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.xml.ws.Response;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -39,8 +40,8 @@ public class AbilityRestController {
 
     @GetMapping("/api/ability/{id}")
     public ResponseEntity getAbility(@Valid @PathVariable("id") Long id){
-        Ability ability = this.abilityService.getAbilityById(id);
-        if(ability==null){
+        Optional<Ability> ability = this.abilityService.getAbilityById(id);
+        if(!ability.isPresent()){
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(ability);

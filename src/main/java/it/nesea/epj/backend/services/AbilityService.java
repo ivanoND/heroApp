@@ -10,7 +10,7 @@ public interface AbilityService {
 
     List<Ability> getAbilities();
 
-    Ability getAbilityById(long id);
+    Optional<Ability> getAbilityById(long id);
 
     Optional<Ability> getAbilityByDescription(String description);
 

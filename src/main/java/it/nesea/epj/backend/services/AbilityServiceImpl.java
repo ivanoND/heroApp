@@ -21,8 +21,8 @@ public class AbilityServiceImpl implements AbilityService {
     }
 
     @Override
-    public Ability getAbilityById(long id) {
-        return abilityDao.getOne(id);
+    public Optional<Ability> getAbilityById(long id) {
+        return abilityDao.findOneById(id);
     }
 
     @Override

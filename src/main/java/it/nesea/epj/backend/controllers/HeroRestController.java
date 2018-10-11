@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -41,8 +42,8 @@ public class HeroRestController {
     @GetMapping("/api/hero/{id}")
     public ResponseEntity getHero(@Valid @PathVariable("id") Long id) {
 
-        Hero hero = this.heroService.getHeroById(id);
-        if(hero==null){
+        Optional<Hero> hero= this.heroService.getHeroById(id);
+        if(!hero.isPresent()){
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(hero);

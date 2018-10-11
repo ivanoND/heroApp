@@ -8,7 +8,7 @@ public interface HeroService {
 
     List<Hero> getHeroes();
 
-    Hero getHeroById(long id);
+    Optional<Hero> getHeroById(long id);
 
     Hero deleteHeroById(long id);
 

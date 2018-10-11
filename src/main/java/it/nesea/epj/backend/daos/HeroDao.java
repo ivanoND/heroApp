@@ -12,4 +12,5 @@ import java.util.Optional;
 public interface HeroDao extends JpaRepository<Hero,Long> {
 
     Optional<Hero> findByName(String name);
+    Optional<Hero> findOneById(long id);
 }
