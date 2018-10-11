@@ -14,13 +14,13 @@ import java.util.stream.Collectors;
 
 @CrossOrigin("http://localhost:4200")
 @org.springframework.web.bind.annotation.RestController
-public class RestController {
+public class HeroRestController {
 
-    @Autowired
-    private HeroService heroService;
+    private final HeroService heroService;
 
-    @Autowired
-    private AbilityService abilityService;
+    HeroRestController(HeroService heroService){
+        this.heroService=heroService;
+    }
 
     @GetMapping("/api/heroes")
     public List<Hero> getHeroes() {
@@ -54,39 +54,5 @@ public class RestController {
                 .stream()
                 .filter(hero -> hero.getName().contains(name))
                 .collect(Collectors.toList());
-    }
-
-    @GetMapping("/api/abilities")
-    public List<Ability> getAbilities(){
-        return abilityService.getAbilities();
-    }
-
-    @GetMapping("/api/abilities/{heroId}")
-    public List<Ability> getNoHeroAbilities(@Valid @PathVariable("heroId") long heroId){
-        List<Ability> allAbilities = getAbilities();
-        List<Ability> heroAbilities = abilityService.getHeroAbilities(heroId);
-
-        allAbilities.removeAll(heroAbilities);
-        return allAbilities;
-    }
-
-    @GetMapping("/api/ability/{id}")
-    public Ability getAbility(@Valid @PathVariable("id") Long id){
-        return abilityService.getAbilityById(id);
-    }
-
-    @PutMapping("/api/ability")
-    public Ability updateAbility(@Valid @RequestBody Ability ability) {
-        return abilityService.updateAbility(ability);
-    }
-
-    @DeleteMapping("/api/ability/{id}")
-    public Ability deleteAbility(@Valid @PathVariable("id") long id){
-        return abilityService.deleteAbilityById(id);
-    }
-
-    @PostMapping("/api/ability")
-    public Ability addAbility(@Valid @RequestBody Ability ability){
-        return this.abilityService.addAbility(ability);
     }
 }
